@@ -1,17 +1,39 @@
 {
-  "name":    "facebook-template-node",
-  "version": "0.0.1",
+    "author": "Your Name",
+    "name": "package-name",
+    "description": "Package description",
+    "version": "0.0.1",
+    "homepage": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "engines": {
+        "node": "~0.6.10 || 0.8 || 0.9"
+    },
+    "scripts": {
+        "start":"coffee server/server.coffee"
+    },
+    "dependencies": {
+        "coffee-script": "1.4.0",
+        "express": "3.0.4",
+        "hbs" : "2.0.1",
+        "config":"0.4.18"
+        
+    },
+    "devDependencies": {
 
-  "description": "Template app for Heroku / Facebook integration, Node.js language",
+        "javascript-brunch": "> 1.0 < 1.5",
+        "coffee-script-brunch": "> 1.0 < 1.5",
+        "css-brunch": "> 1.0 < 1.5",
+        "stylus-brunch": "> 1.0 < 1.5",
+        "handlebars-brunch": "> 1.0 < 1.5",
+        "uglify-js-brunch": "> 1.0 < 1.5",
+        "clean-css-brunch": "> 1.0 < 1.5",
+        "auto-reload-brunch": "> 1.0 < 1.5",
 
-  "dependencies": {
-    "async":     "0.1.18",
-    "ejs":       "0.4.3",
-    "express":   "2.4.6",
-    "faceplate": "0.0.4"
-  },
-
-  "engines": {
-    "node": "0.6.x"
-  }
+        "mocha": "0.14.0",
+        "expect.js": "0.1.2",
+        "ws": "0.4.21"
+    }
 }
