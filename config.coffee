@@ -24,9 +24,15 @@ exports.config =
                     'vendor/scripts/lodash-v0.8.2.js'
                     'vendor/scripts/backbone-0.9.2.js'
                 ]
+                after: [
+                    'test/vendor/scripts/test-helper.js'
+                ]                
 
         stylesheets:
-            joinTo: 'stylesheets/app.css'
+            joinTo: 
+                'stylesheets/app.css': /^(app|vendor)/
+                'test/stylesheets/test.css': /^test/
+
             order:
                 before: ['vendor/styles/normalize.css']
                 after: ['vendor/styles/helpers.css']

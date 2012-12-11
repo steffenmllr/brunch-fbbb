@@ -345,7 +345,6 @@ window.require.define({"models/facebook_model": function(exports, require, modul
 
     FacebookUser.prototype.initialize = function() {
       _.bindAll(this, 'onLoginStatusChange');
-      FB.Event.subscribe('auth.authResponseChange', this.onLoginStatusChange);
       if (config.user) {
         return this.set(config.user, {
           silent: true

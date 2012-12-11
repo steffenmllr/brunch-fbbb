@@ -1,7 +1,9 @@
  module.exports =
-    language: 'de_DE'
-    scope: []
-    public_config:        
+    language: 'de_DE'        
+    appID: '436453793083114'
+    appSecret: '3aa3ecb059ccd8a7baf7851e943e1c35'    
+    public_config:
+        scope: ['email', 'publish_stream']
         share:
             method: "feed"
             redirect_uri: "YOUR URL HERE"

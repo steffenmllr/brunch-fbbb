@@ -33,8 +33,9 @@
         "clean-css-brunch": "> 1.0 < 1.5",
         "auto-reload-brunch": "> 1.0 < 1.5",
 
-        "mocha": "0.14.0",
-        "expect.js": "0.1.2",
+        "mocha": "0.14.0",        
+        "chai": "*",
+        "sinon-chai": "*",
         "ws": "0.4.21"
     }
 }

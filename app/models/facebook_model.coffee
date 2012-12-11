@@ -2,7 +2,7 @@ config = require 'config'
 module.exports = class FacebookUser extends Backbone.Model
     initialize: ->
         _.bindAll @, 'onLoginStatusChange'
-        FB.Event.subscribe 'auth.authResponseChange', @onLoginStatusChange
+        #FB.Event.subscribe 'auth.authResponseChange', @onLoginStatusChange
 
         # Set User if there is a config
         @set config.user, silent: true if config.user
@@ -21,7 +21,7 @@ module.exports = class FacebookUser extends Backbone.Model
 
     login: (callback = ->) ->
         FB.login callback,
-            scope: config.scope?.join ","
+            scope: config.scope?.join ","        
 
     sync: (method, model, options) ->
         throw new Error 'FacebookUser is a readonly model, cannot perform ' + method unless method is 'read'

@@ -4,5 +4,5 @@ describe 'AppView', ->
     beforeEach ->
         @view = new AppView()
 
-    it "should exist", ->
-        expect( @view ).to.be.ok()
+    #it "should exist", ->
+        #expect( @view ).to.be.ok()
