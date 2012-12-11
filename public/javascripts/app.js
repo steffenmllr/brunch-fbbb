@@ -371,6 +371,7 @@ window.require.define({"models/facebook_model": function(exports, require, modul
       if (callback == null) {
         callback = function() {};
       }
+      console.log('config', config);
       return FB.login(callback, {
         scope: (_ref = config.scope) != null ? _ref.join(",") : void 0
       });

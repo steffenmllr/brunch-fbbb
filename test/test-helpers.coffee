@@ -8,5 +8,4 @@ chai.use(sinonChai)
 module.exports =
   expect: require('chai').expect
   should: chai.should()
-  sinon: sinon
-  config: MockConfig
+  sinon: sinon  

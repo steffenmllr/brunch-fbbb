@@ -1,13 +1,6 @@
 FacebookModel = require 'models/facebook_model'
-
-window.FB = 
-    api: ->
-    Events: 
-        subscribe: ->
-    login: ->
-
 describe 'Facebook User Model', ->
-    
+
     before ->
         sinon.stub window.FB.Events, 'subscribe'
 
@@ -19,14 +12,19 @@ describe 'Facebook User Model', ->
         expect( @model ).to.be.ok
 
 
-    describe 'Facebook Login Method', =>
+    describe 'Model Login Function', =>
         before ->
             @fbLogin = sinon.stub window.FB, 'login'            
 
-        it "login should be a function", ->
+        it "should be a function", ->
             expect( @model.login ).to.be.a 'function'
 
-        it "FB login can have a callback function", ->
+        it "should have a callback function", ->
             callback = sinon.spy()
             @model.login(callback)
             @fbLogin.should.have.been.calledWith(callback)
+
+        it "should be callback with a scope", ->
+            callback = sinon.spy()
+            @model.login(callback)
+            @fbLogin.should.have.been.calledWith(callback, scope : 'email,publish_stream')

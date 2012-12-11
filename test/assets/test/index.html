@@ -9,6 +9,12 @@
   <script src="javascripts/test-vendor.js"></script>
   <script src="javascripts/test.js"></script>
   <script>
+/*
+  // Setup Global App Config
+  require.define({"config": function(exports, require, module) {
+      module.exports =
+  }});
+*/
   $(function(){
     mocha
       .globals([ 'script*', 'css*']) // acceptable globals

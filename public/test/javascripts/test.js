@@ -78,40 +78,10 @@
   globals.require.brunch = true;
 })();
 
-window.require.define({"test/mocks/mock_config": function(exports, require, module) {
-  
-  module.exports = {
-    language: 'de_DE',
-    appID: '436453793083114',
-    appSecret: '3aa3ecb059ccd8a7baf7851e943e1c35',
-    public_config: {
-      scope: ['email', 'publish_stream'],
-      share: {
-        method: "feed",
-        redirect_uri: "YOUR URL HERE",
-        link: "https://developers.facebook.com/docs/reference/dialogs/",
-        picture: "http://fbrell.com/f8.jpg",
-        name: "Facebook Dialogs",
-        caption: "Reference Documentation",
-        description: "Using Dialogs to interact with users."
-      }
-    }
-  };
-  
-}});
-
 window.require.define({"test/models/facebook_model_test": function(exports, require, module) {
   var FacebookModel;
 
   FacebookModel = require('models/facebook_model');
-
-  window.FB = {
-    api: function() {},
-    Events: {
-      subscribe: function() {}
-    },
-    login: function() {}
-  };
 
   describe('Facebook User Model', function() {
     var _this = this;
@@ -124,18 +94,26 @@ window.require.define({"test/models/facebook_model_test": function(exports, requ
     it("should exist", function() {
       return expect(this.model).to.be.ok;
     });
-    return describe('Facebook Login Method', function() {
+    return describe('Model Login Function', function() {
       before(function() {
         return this.fbLogin = sinon.stub(window.FB, 'login');
       });
-      it("login should be a function", function() {
+      it("should be a function", function() {
         return expect(this.model.login).to.be.a('function');
       });
-      return it("FB login can have a callback function", function() {
+      it("should have a callback function", function() {
         var callback;
         callback = sinon.spy();
         this.model.login(callback);
         return this.fbLogin.should.have.been.calledWith(callback);
+      });
+      return it("should be callback with a scope", function() {
+        var callback;
+        callback = sinon.spy();
+        this.model.login(callback);
+        return this.fbLogin.should.have.been.calledWith(callback, {
+          scope: 'email,publish_stream'
+        });
       });
     });
   });
@@ -166,8 +144,7 @@ window.require.define({"test/test-helpers": function(exports, require, module) {
   module.exports = {
     expect: require('chai').expect,
     should: chai.should(),
-    sinon: sinon,
-    config: MockConfig
+    sinon: sinon
   };
   
 }});
