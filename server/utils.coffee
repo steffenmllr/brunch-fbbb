@@ -2,12 +2,11 @@ crypto = require 'crypto'
 Configuration = require 'config'
 
 Utilities = class Utils
-    getConfigData: ->
+    getConfigData: (request) ->
       templateData = {}
       templateData.public_config = {}
 
-      signed_request = @parseSignedRequest(signed_request, Configuration.appSecret) if signed_request and Configuration.appSecret
-      console.log 'signed_request', signed_request
+      signed_request = @parseSignedRequest(request, Configuration.appSecret) if signed_request and Configuration.appSecret
       if signed_request
         templateData.public_config.user =
           liked: signed_request.page?.liked
