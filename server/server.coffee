@@ -38,6 +38,7 @@ app.all '/channel.html', (req, res) ->
 
 app.all '/', (req, res) =>
   # Set Tempalte Data
+  console.log req.body
   templateData = utils.getConfigData(req.body['signed_request'])
   templateData.reqpath = req.headers.host + req.path
   res.render 'index', templateData
