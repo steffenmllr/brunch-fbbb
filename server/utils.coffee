@@ -5,9 +5,7 @@ Utilities = class Utils
     getConfigData: (request) ->
       templateData = {}
       templateData.public_config = {}
-      console.log 'request', request, 'Configuration.appSecret',  Configuration.appSecret
-      signed_request = @parseSignedRequest(request, Configuration.appSecret) if signed_request and Configuration.appSecret
-      console.log 'signed_request', signed_request
+      signed_request = @parseSignedRequest(request, Configuration.appSecret) if request and Configuration.appSecret      
       if signed_request
         templateData.public_config.user =
           liked: signed_request.page?.liked
@@ -24,7 +22,7 @@ Utilities = class Utils
       # Decode SignedRequest
       [encodedSignature, encoded] = request.split '.'
       signature = @base64decode encodedSignature
-      decoded = @base64decode encoded
+      decoded = @base64decode encoded    
       data = JSON.parse decoded
 
       # verify
@@ -38,7 +36,7 @@ Utilities = class Utils
         .replace(/\+/g, '-')
         .replace(/\=/g, '')
 
-      return data if (result == encodedSignature) else console.log 'encodedSignature error'
+      return data if (result == encodedSignature)
 
     base64decode: (data) ->
       while data.length % 4 != 0

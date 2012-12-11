@@ -41,7 +41,6 @@ app.all '/', (req, res) =>
   
   templateData = utils.getConfigData(req.body['signed_request'])
   templateData.reqpath = req.headers.host + req.path
-  console.log 'Configuration.appID:', Configuration.appID
   res.render 'index', templateData
 
 # Export Start Server
@@ -49,7 +48,6 @@ app.startServer = (port, path, callback) ->
   app.listen PORT, ->
     console.log "Express server listening on port %d in %s mode", PORT, app.settings.env
 
-console.log app.settings.env
 if app.settings.env is "production"
   app.listen PORT, ->
     console.log "Express server listening on port %d in %s mode", PORT, app.settings.env
