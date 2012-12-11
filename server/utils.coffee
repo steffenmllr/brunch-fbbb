@@ -5,8 +5,9 @@ Utilities = class Utils
     getConfigData: (request) ->
       templateData = {}
       templateData.public_config = {}
-
+      console.log 'request', request, 'Configuration.appSecret',  Configuration.appSecret
       signed_request = @parseSignedRequest(request, Configuration.appSecret) if signed_request and Configuration.appSecret
+      console.log 'signed_request', signed_request
       if signed_request
         templateData.public_config.user =
           liked: signed_request.page?.liked
