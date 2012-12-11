@@ -47,6 +47,7 @@ app.startServer = (port, path, callback) ->
   app.listen PORT, ->
     console.log "Express server listening on port %d in %s mode", PORT, app.settings.env
 
+console.log app.settings.env
 if app.settings.env is "production"
   app.listen PORT, ->
     console.log "Express server listening on port %d in %s mode", PORT, app.settings.env
