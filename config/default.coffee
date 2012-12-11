@@ -1,7 +1,7 @@
  module.exports =
-    language: 'de_DE'
-    scope: []
-    public_config:        
+    language: 'de_DE'    
+    public_config:
+        scope: []
         share:
             method: "feed"
             redirect_uri: "YOUR URL HERE"

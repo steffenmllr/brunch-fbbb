@@ -79,9 +79,11 @@
 })();
 
 window.require.define({"test/models/facebook_model_test": function(exports, require, module) {
-  var FacebookModel;
+  var FacebookModel, config;
 
   FacebookModel = require('models/facebook_model');
+
+  config = require('config');
 
   describe('Facebook User Model', function() {
     var _this = this;
@@ -109,6 +111,7 @@ window.require.define({"test/models/facebook_model_test": function(exports, requ
       });
       return it("should be callback with a scope", function() {
         var callback;
+        config.scope = ['email', 'publish_stream'];
         callback = sinon.spy();
         this.model.login(callback);
         return this.fbLogin.should.have.been.calledWith(callback, {
@@ -127,9 +130,7 @@ window.require.define({"test/spec": function(exports, require, module) {
 }});
 
 window.require.define({"test/test-helpers": function(exports, require, module) {
-  var MockConfig, chai, expect, sinon, sinonChai;
-
-  MockConfig = require('./mocks/mock_config');
+  var chai, expect, sinon, sinonChai;
 
   expect = require('expect.js');
 

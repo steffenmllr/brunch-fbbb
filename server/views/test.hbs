@@ -5,20 +5,24 @@
   <link rel="stylesheet" href="stylesheets/test.css" />
   <script src="../javascripts/vendor.js"></script>
   <script src="../javascripts/app.js"></script>
+  <script>
+            // Setup Global App Config
+            require.define({
+              "config": function(exports, require, module) {
+                module.exports = 
+                {{#if public_config}}
+                    {{{json public_config}}};
+                {{else}}         
+                    {};
+                {{/if}}
+
+              }
+            });  
+  </script>  
   <script src="javascripts/test-vendor.js"></script>
   <script src="javascripts/test.js"></script>
   <script>
-    // Setup Global App Config
-    require.define({"config": function(exports, require, module) {
-      module.exports =
-        {{#if public_config}}
-          {{{json public_config}}};
-        {{else}}         
-          {};
-        {{/if}}
-    }});  
-    
-    $(function(){
+    $(function(){      
       mocha
       .globals([ 'script*', 'css*']) // acceptable globals
       .run();

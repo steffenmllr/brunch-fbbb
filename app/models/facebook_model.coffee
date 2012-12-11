@@ -20,7 +20,6 @@ module.exports = class FacebookUser extends Backbone.Model
         @trigger(response.status, @, response)
 
     login: (callback = ->) ->
-        console.log 'config', config
         FB.login callback,
             scope: config.scope?.join ","        
 

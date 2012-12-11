@@ -1,4 +1,3 @@
-MockConfig = require './mocks/mock_config'
 expect = require 'expect.js'
 chai = require 'chai'
 sinon = require 'sinon'

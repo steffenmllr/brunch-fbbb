@@ -1,4 +1,5 @@
 FacebookModel = require 'models/facebook_model'
+config = require 'config'
 describe 'Facebook User Model', ->
 
     before ->
@@ -25,6 +26,7 @@ describe 'Facebook User Model', ->
             @fbLogin.should.have.been.calledWith(callback)
 
         it "should be callback with a scope", ->
+            config.scope = ['email','publish_stream']
             callback = sinon.spy()
             @model.login(callback)
             @fbLogin.should.have.been.calledWith(callback, scope : 'email,publish_stream')
