@@ -37,7 +37,7 @@ Utilities = class Utils
         .replace(/\+/g, '-')
         .replace(/\=/g, '')
 
-      return data if (result == encodedSignature)    
+      return data if (result == encodedSignature) else console.log 'encodedSignature error'
 
     base64decode: (data) ->
       while data.length % 4 != 0
