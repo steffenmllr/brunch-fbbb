@@ -7,6 +7,7 @@ Utilities = class Utils
       templateData.public_config = {}
 
       signed_request = @parseSignedRequest(signed_request, Configuration.appSecret) if signed_request and Configuration.appSecret
+      console.log 'signed_request', signed_request
       if signed_request
         templateData.public_config.user =
           liked: signed_request.page?.liked
