@@ -9,7 +9,7 @@
         "url": ""
     },
     "engines": {
-        "node": "0.8.13"
+        "node": "0.7"
     },
     "scripts": {
         "start":"coffee server/server.coffee"
