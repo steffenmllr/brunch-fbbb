@@ -16,7 +16,7 @@
         "start":"coffee server/server.coffee"
     },
     "dependencies": {
-        "coffee-script": "1.4.0",
+        "coffee-script": "*",
         "express": "3.0.4",
         "hbs" : "2.0.1",
         "config":"0.4.18"
