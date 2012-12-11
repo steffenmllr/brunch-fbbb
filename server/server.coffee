@@ -41,7 +41,7 @@ app.all '/', (req, res) =>
   
   templateData = utils.getConfigData(req.body['signed_request'])
   templateData.reqpath = req.headers.host + req.path
-  console.log templateData, req.body, Configuration
+  console.log 'Configuration.appID:', Configuration.appID
   res.render 'index', templateData
 
 # Export Start Server
