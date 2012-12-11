@@ -36,9 +36,11 @@ app.configure 'production', ->
 app.all '/channel.html', (req, res) ->
   res.render 'channel', Configuration
 
+app.all '/test', (req, res) ->
+  res.render 'test', Configuration
+
 app.all '/', (req, res) =>
-  # Set Tempalte Data
-  
+  # Set Tempalte Data  
   templateData = utils.getConfigData(req.body['signed_request'])
   templateData.reqpath = req.headers.host + req.path
   res.render 'index', templateData
