@@ -24,7 +24,7 @@ module.exports = class FacebookUser extends Backbone.Model
             scope: config.scope?.join ","        
 
     sync: (method, model, options) ->
-        throw new Error 'FacebookUser is a readonly model, cannot perform ' + method unless method is 'read'
+        throw new Error('FacebookUser is a readonly model, cannot perform ' + method) unless method is 'read'
         FB.api '/me', (resp) =>
           if resp.error then options.error(resp) else options.success(resp)
           return true

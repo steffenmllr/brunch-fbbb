@@ -93,10 +93,26 @@ window.require.define({"test/models/facebook_model_test": function(exports, requ
     beforeEach(function() {
       return this.model = new FacebookModel();
     });
-    it("should exist", function() {
-      return expect(this.model).to.be.ok;
+    describe('Constructor Function', function() {
+      it("should create a model", function() {
+        return expect(this.model).to.be.ok;
+      });
+      it("should have set defaults for liked, accessToken and userID", function() {
+        expect(this.model.get('liked')).to.be["false"];
+        expect(this.model.get('accessToken')).to.not.be.undefined;
+        return expect(this.model.get('userID')).to.not.be.undefined;
+      });
+      return it("should set the model data from the config", function() {
+        config.user = {
+          testvalue: 'test',
+          liked: true
+        };
+        this.model = new FacebookModel();
+        expect(this.model.get('liked')).to.equal(true);
+        return expect(this.model.get('testvalue')).to.equal('test');
+      });
     });
-    return describe('Model Login Function', function() {
+    describe('Model Login Function', function() {
       before(function() {
         return this.fbLogin = sinon.stub(window.FB, 'login');
       });
@@ -117,6 +133,20 @@ window.require.define({"test/models/facebook_model_test": function(exports, requ
         return this.fbLogin.should.have.been.calledWith(callback, {
           scope: 'email,publish_stream'
         });
+      });
+    });
+    return describe('Model sync Function', function() {
+      before(function() {
+        return this.fbApi = sinon.stub(window.FB, 'api');
+      });
+      it("should throw an Error unless method is 'read'", function() {
+        return expect(this.model.fetch()).to.not["throw"](Error);
+      });
+      return it("should call the Facebook API with /me", function() {
+        var callback;
+        callback = sinon.spy();
+        this.model.fetch();
+        return this.fbApi.should.have.been.calledWith('/me');
       });
     });
   });
